@@ -1,26 +1,44 @@
 import React from 'react'
-import { Button,InputGroup,FormControl } from 'react-bootstrap';
 
 class Home extends React.Component{
+
+  constructor(){
+  super()
+    this.state={
+    player1:'',
+    player2:''
+    }
+  }
+
+  p1ontext=(ev)=>{
+    console.log(ev.target.value)
+    this.setState({player1:ev.target.value});
+  }
+
+  p2ontext=(ev)=>{
+
+    console.log(ev.target.value);
+    this.setState({player2:ev.target.value});
+
+  }
+
+  next=()=>{
+    alert(this.state.player1)
+    this.props.history.push('/color',{p1:this.state.player1,p2:this.state.player2})
+  }
+  
   render(){
     return(
-      <div>
-      <p>Home page welcome</p>
+      <div style={{display:'flex',justifyContent:'center',marginTop:'10%'}}>
+        <div style={{display:'flex',flexDirection:'column',}}>
+        <input type="text" class="form-control" placeholder='Player One' onChange={this.p1ontext}></input>
+        <input type="text" class="form-control"  placeholder='Player Two' style={{marginTop:'5%'}} onChange={this.p2ontext}></input>
+        <button type="button" class="btn btn-info" style={{marginTop:'12%'}} onClick={this.next} >NEXT</button>
 
-      <InputGroup className="mb-3">
-    <FormControl
-      placeholder="Recipient's username"
-      aria-label="Recipient's username"
-      aria-describedby="basic-addon2"
-    />
-    <InputGroup.Append>
-      <Button variant="outline-secondary">Button</Button>
-    </InputGroup.Append>
-  </InputGroup>
-        
-      <input></input>
+      </div>
+
       </div>
     )
-  }
+  } 
 }
 export default Home;
