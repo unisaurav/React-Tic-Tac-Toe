@@ -35,7 +35,7 @@ class Color extends React.Component{
 
 
     xoon(data,val=2){
-   console.log(val);
+  //  console.log(val);
 if(val===1){
         if(this.state.p1color===data){
           return("O");
@@ -48,6 +48,25 @@ if(val===1){
      
     }
 
+    renderbutton(){
+      if(this.state.p1color!==null&&this.state.p2color!==null){
+        console.log(this.state.p1color);
+        console.log(this.state.p2color);
+        return(
+<button type="button" class="btn btn-info active" onClick={()=>this.gogame()}>Go Aheade</button>
+        )
+      }else {
+        return(<button type="button" class="btn btn-info"  disabled>Go Aheade</button>
+
+        )
+      }
+
+    }
+
+    gogame(){
+      this.props.history.push("/game",{p1c:this.state.p1color,p2c:this.state.p2color,p1n:this.state.player1,p2n:this.state.player2});
+    }
+
 
 
   render(){
@@ -56,36 +75,38 @@ if(val===1){
       <div style={{display:'flex',justifyContent:'center',marginTop:50}}>
 
       <div>
-        <h2 style={{color:'gray',marginLeft:10}}>{this.state.player1}</h2>
+        <h2 style={{color:'gray',marginLeft:10 ,fontFamily:'Bai Jamjuree'}}>{this.state.player1.toUpperCase()}</h2>
         <div style={{display:'flex',flexDirection:'row'}}>
-        <div style={{backgroundColor:'red',height:40,width:40, marginLeft:10}} onClick={()=>this.oncolorcall("red",1)} ><h4>{this.xoon("red",1)}</h4> </div>
-        <div style={{backgroundColor:'blue',height:40,width:40, marginLeft:10}} onClick={()=>this.oncolorcall("blue",1)} ><h4>{this.xoon("blue",1)}</h4> </div>
+        <div style={{backgroundColor:'red',height:40,width:40, marginLeft:10}} onClick={()=>this.oncolorcall("red",1)} ><h4 style={{textAlign:'center'}}>{this.xoon("red",1)}</h4> </div>
+        <div style={{backgroundColor:'blue',height:40,width:40, marginLeft:10}} onClick={()=>this.oncolorcall("blue",1)} ><h4 style={{textAlign:'center'}}>{this.xoon("blue",1)}</h4> </div>
 
-        <div style={{backgroundColor:'green',height:40,width:40, marginLeft:10}} onClick={()=>this.oncolorcall("green",1)}><h4>{this.xoon("green",1)}</h4> </div>
+        <div style={{backgroundColor:'green',height:40,width:40, marginLeft:10}} onClick={()=>this.oncolorcall("green",1)}><h4 style={{textAlign:'center'}}>{this.xoon("green",1)}</h4> </div>
 
-        <div style={{backgroundColor:'gray',height:40,width:40, marginLeft:10}} onClick={()=>this.oncolorcall("gray",1)}> <h4>{this.xoon("gray",1)}</h4></div>
+        <div style={{backgroundColor:'gray',height:40,width:40, marginLeft:10}} onClick={()=>this.oncolorcall("gray",1)}> <h4 style={{textAlign:'center'}}>{this.xoon("gray",1)}</h4></div>
 
 
-        <div style={{backgroundColor:'yellow',height:40,width:40, marginLeft:10}} onClick={()=>this.oncolorcall("yellow",1)}><h4>{this.xoon("yellow",1)}</h4> </div>
+        <div style={{backgroundColor:'yellow',height:40,width:40, marginLeft:10}} onClick={()=>this.oncolorcall("yellow",1)}><h4 style={{textAlign:'center'}}>{this.xoon("yellow",1)}</h4> </div>
 
-        <div style={{backgroundColor:'black',height:40,width:40, marginLeft:10}} onClick={()=>this.oncolorcall("black",1)}> <h4>{this.xoon("black",1)}</h4>  </div>
+        <div style={{backgroundColor:'black',height:40,width:40, marginLeft:10}} onClick={()=>this.oncolorcall("black",1)}> <h4 style={{textAlign:'center',color:'white'}}>{this.xoon("black",1)}</h4>  </div>
         </div>
-        <h2 style={{color:'gray',marginLeft:10}}>{this.state.player2}</h2>
+        <h2 style={{color:'gray',marginLeft:10 ,fontFamily:'Bai Jamjuree'}}>{this.state.player2.toUpperCase()}</h2>
         <div style={{display:'flex',flexDirection:'row'}}>
-        <div style={{backgroundColor:'red',height:40,width:40, marginLeft:10}} onClick={()=>this.oncolorcall("red")} > <h4>{this.xoon("red")}</h4></div>
-        <div style={{backgroundColor:'blue',height:40,width:40, marginLeft:10}} onClick={()=>this.oncolorcall("blue")} > <h4>{this.xoon("blue")}</h4> </div>
+        <div style={{backgroundColor:'red',height:40,width:40, marginLeft:10}} onClick={()=>this.oncolorcall("red")} > <h4 style={{textAlign:'center'}}>{this.xoon("red")}</h4></div>
+        <div style={{backgroundColor:'blue',height:40,width:40, marginLeft:10}} onClick={()=>this.oncolorcall("blue")} > <h4 style={{textAlign:'center'}}>{this.xoon("blue")}</h4> </div>
 
-        <div style={{backgroundColor:'green',height:40,width:40, marginLeft:10}} onClick={()=>this.oncolorcall("green")}>  <h4>{this.xoon("green")}</h4></div>
+        <div style={{backgroundColor:'green',height:40,width:40, marginLeft:10}} onClick={()=>this.oncolorcall("green")}>  <h4 style={{textAlign:'center'}}>{this.xoon("green")}</h4></div>
 
-        <div style={{backgroundColor:'gray',height:40,width:40, marginLeft:10}} onClick={()=>this.oncolorcall("gray")}> <h4>{this.xoon("gray")}</h4> </div>
+        <div style={{backgroundColor:'gray',height:40,width:40, marginLeft:10}} onClick={()=>this.oncolorcall("gray")}> <h4 style={{textAlign:'center'}}>{this.xoon("gray")}</h4> </div>
 
 
-        <div style={{backgroundColor:'yellow',height:40,width:40, marginLeft:10}} onClick={()=>this.oncolorcall("yellow")}> <h4>{this.xoon("yellow")}</h4> </div>
+        <div style={{backgroundColor:'yellow',height:40,width:40, marginLeft:10}} onClick={()=>this.oncolorcall("yellow")}> <h4 style={{textAlign:'center'}}>{this.xoon("yellow")}</h4> </div>
 
-        <div style={{backgroundColor:'black',height:40,width:40, marginLeft:10}} onClick={()=>this.oncolorcall("black")}>  <h4>{this.xoon("black")}</h4></div>
+        <div style={{backgroundColor:'black',height:40,width:40, marginLeft:10}} onClick={()=>this.oncolorcall("black")}>  <h4 style={{textAlign:'center',color:'white'}}>{this.xoon("black")}</h4></div>
+        </div>
+        <div style={{ display:'flex',justifyContent:'flex-end',marginTop:10}}>
+        {this.renderbutton()}
         </div>
       </div>
-
 
 
       </div>

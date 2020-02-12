@@ -23,7 +23,7 @@ class Home extends React.Component{
   }
 
   next=()=>{
-    alert(this.state.player1)
+    // alert(this.state.player1)
     this.props.history.push('/color',{p1:this.state.player1,p2:this.state.player2})
   }
   

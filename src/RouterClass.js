@@ -19,7 +19,7 @@ class RouterClass extends React.Component {
 
         <Route path="/Home" exact component={Home} />
 
-        <Route path="/mypage" exact component={Game} />
+        <Route path="/game" exact component={Game} />
         <Route path="/app" exact component={App} />
 
       </Router>
