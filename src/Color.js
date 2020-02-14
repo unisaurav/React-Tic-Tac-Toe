@@ -13,6 +13,8 @@ class Color extends React.Component{
      
     }
 
+    
+
     componentWillMount(){
       console.log(this.props)
       console.log("data im here from",this.props.location.state);
@@ -64,7 +66,11 @@ if(val===1){
     }
 
     gogame(){
+      if(this.state.p1color===this.state.p2color){
+        alert("abe chutiyo alag alag color lo naaa.....")
+      }else{
       this.props.history.push("/game",{p1c:this.state.p1color,p2c:this.state.p2color,p1n:this.state.player1,p2n:this.state.player2});
+      }
     }
 
 

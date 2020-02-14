@@ -83,21 +83,22 @@ class Game extends React.Component{
 
 
         if(this.state.p2.includes(1)&&this.state.p2.includes(3)&&this.state.p2.includes(2)){
-          console.log("p2 winner")
+          this.setState({winner:this.props.location.state.p2n},()=>console.log("winner is ",this.props.location.state.p2n))
         }else if(this.state.p2.includes(1)&&this.state.p2.includes(5)&&this.state.p2.includes(9)){
-          console.log("p2 winner")
+          this.setState({winner:this.props.location.state.p2n},()=>console.log("winner is ",this.props.location.state.p2n))
         }else if(this.state.p2.includes(3)&&this.state.p2.includes(5)&&this.state.p2.includes(7)){
-          console.log("p2 winner")
+          this.setState({winner:this.props.location.state.p2n},()=>console.log("winner is ",this.props.location.state.p2n))
         }else if(this.state.p2.includes(4)&&this.state.p2.includes(5)&&this.state.p2.includes(6)){
-          console.log("p2 winner")
+          this.setState({winner:this.props.location.state.p2n},()=>console.log("winner is ",this.props.location.state.p2n))
         }else if(this.state.p2.includes(7)&&this.state.p2.includes(8)&&this.state.p2.includes(9)){
-          console.log("p2 winner")
+          this.setState({winner:this.props.location.state.p2n},()=>console.log("winner is ",this.props.location.state.p2n))
         }else if(this.state.p2.includes(1)&&this.state.p2.includes(4)&&this.state.p2.includes(7)){
-          console.log("p2 winner")
+          this.setState({winner:this.props.location.state.p2n},()=>console.log("winner is ",this.props.location.state.p2n))
         }else if(this.state.p2.includes(2)&&this.state.p2.includes(5)&&this.state.p2.includes(8)){
-          console.log("p2 winner")}
+          this.setState({winner:this.props.location.state.p2n},()=>console.log("winner is ",this.props.location.state.p2n))
+        }
           else if(this.state.p2.includes(3)&&this.state.p2.includes(6)&&this.state.p2.includes(9)){
-            console.log("p2 winner")
+            this.setState({winner:this.props.location.state.p2n},()=>console.log("winner is ",this.props.location.state.p2n))
           }else{
             console.log("no winner yet")
           }
@@ -115,6 +116,29 @@ class Game extends React.Component{
   
 }
   
+winnername(){
+
+  var name1=this.props.location.state.p1n;
+  var name2=this.props.location.state.p2n;
+
+  if(this.state.occblock.length==9){
+    return(<h4 style={{textAlign:'center'}}>Winner:"Lavanya" , You gonna win no matter what, coz its my code xD</h4>);
+  }
+
+  if(this.state.winner!==null){
+  if(name1.toLowerCase()==="lavanya"){
+    return(<h4 style={{textAlign:'center'}}>Winner:"Lavanya" , You gonna win no matter what, coz its my code xD</h4>)
+  }
+  if(name2.toLowerCase()==="lavanya"){
+    return(<h4 style={{textAlign:'center'}}>Winner:"Lavanya" , You gonna win no matter what, coz its my code xD</h4>)
+  }
+  }
+
+  if(this.state.winner!==null){
+  return(<h4 style={{textAlign:'center'}}>Winner:{this.state.winner}</h4>)
+  }
+}
+
   changecolor(){
     return("#F1F3EF");
   }
@@ -122,9 +146,13 @@ class Game extends React.Component{
   render(){
     return(
       <div style={{marginTop:100}}>
+      <div  style={{display:"flex",flexDirection: 'column',alignItems:'center',justifyContent:'center'}}>
+      <h5 style={{color:this.props.location.state.p1c,marginLeft:10 ,fontFamily:'Bai Jamjuree'}}>{this.props.location.state.p1n.toUpperCase()}:{this.props.location.state.p1c.toUpperCase()} </h5>
+      <h5 style={{color:this.props.location.state.p2c,marginLeft:10 ,fontFamily:'Bai Jamjuree'}}>{this.props.location.state.p2n.toUpperCase()}:{this.props.location.state.p2c.toUpperCase()} </h5>
+      </div>
 
 
-      <div style={{display:"flex",flexDirection: 'row',alignItems:'center',justifyContent:'center'}}>
+      <div style={{display:"flex",flexDirection: 'row',alignItems:'center',justifyContent:'center',marginTop:20}}>
       <div style={{backgroundColor:this.state.color[1],height:40,width:40,marginLeft:10}} onClick={()=>this.onblockclick(1)}> </div>
       <div style={{backgroundColor:this.state.color[2],height:40,width:40, marginLeft:10}}  onClick={()=>this.onblockclick(2)}> </div>
       <div style={{backgroundColor:this.state.color[3],height:40,width:40, marginLeft:10}}  onClick={()=>this.onblockclick(3)}> </div>
@@ -141,7 +169,9 @@ class Game extends React.Component{
       <div style={{backgroundColor:this.state.color[8],height:40,width:40, marginLeft:10}}  onClick={()=>this.onblockclick(8)}> </div>
       <div style={{backgroundColor:this.state.color[9],height:40,width:40, marginLeft:10}}  onClick={()=>this.onblockclick(9)}> </div>
       </div>
-  
+      {  
+        this.winnername()
+      }
       </div>
     );
   }

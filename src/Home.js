@@ -23,7 +23,15 @@ class Home extends React.Component{
   }
 
   next=()=>{
-    // alert(this.state.player1)
+    var name =this.state.player1.toLowerCase();
+    var name2 =this.state.player2.toLowerCase();
+
+    if(name==="lavanya"){
+      alert("I <3 you player 1, u shall win")
+    }
+    if(name2==="lavanya"){
+      alert("I <3 you player 2, u shall win ")
+    }
     this.props.history.push('/color',{p1:this.state.player1,p2:this.state.player2})
   }
   
