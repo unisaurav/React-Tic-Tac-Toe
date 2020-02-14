@@ -23,7 +23,7 @@ class Game extends React.Component{
       return;
     }
     var n = this.state.occblock.includes(blockno);
-    if(n==false){
+    if(n===false){
       const array=this.state.occblock;
       array.push(blockno);
       this.setState({occblock:array},()=>{console.log("Occupied array ==", this.state.occblock)});
@@ -121,9 +121,6 @@ winnername(){
   var name1=this.props.location.state.p1n;
   var name2=this.props.location.state.p2n;
 
-  if(this.state.occblock.length==9){
-    return(<h4 style={{textAlign:'center'}}>Winner:"Lavanya" , You gonna win no matter what, coz its my code xD</h4>);
-  }
 
   if(this.state.winner!==null){
   if(name1.toLowerCase()==="lavanya"){
@@ -137,6 +134,17 @@ winnername(){
   if(this.state.winner!==null){
   return(<h4 style={{textAlign:'center'}}>Winner:{this.state.winner}</h4>)
   }
+
+  if(this.state.occblock.length===9){
+
+    if(name1.toLowerCase()==="lavanya"){
+      return(<h4 style={{textAlign:'center'}}>Winner:"Lavanya" , You gonna win no matter what, coz its my code xD</h4>)
+    }else{
+      return(<h4 style={{textAlign:'center'}}>Its TIE </h4>)
+
+    }
+  }
+
 }
 
   changecolor(){
